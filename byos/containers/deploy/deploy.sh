@@ -3,6 +3,8 @@
 set -xeuo pipefail
 IFS=$'\n\t'
 
+declare imagename="Ubuntu2204"
+
 declare region="westus"
 declare teamRG="teamResources"
 declare proctorRG="proctorResources"
@@ -179,7 +181,7 @@ then
 fi
 
 # Create VM
-az vm create -n internal-vm -g $teamRG --admin-username azureuser --generate-ssh-keys --public-ip-address "" --image UbuntuLTS --vnet-name vnet --subnet vm-subnet
+az vm create -n internal-vm -g $teamRG --admin-username azureuser --generate-ssh-keys --public-ip-address "" --image $imagename --vnet-name vnet --subnet vm-subnet
 
 if [ $? == 0 ];
 then
